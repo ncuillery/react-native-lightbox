@@ -60,6 +60,7 @@ export default class LightboxOverlay extends Component {
     }),
     backgroundColor: PropTypes.string,
     isOpen:          PropTypes.bool,
+    headerStyle:     PropTypes.object,
     renderHeader:    PropTypes.func,
     onOpen:          PropTypes.func,
     onClose:         PropTypes.func,
@@ -179,6 +180,7 @@ export default class LightboxOverlay extends Component {
   render() {
     const {
       isOpen,
+      headerStyle,
       renderHeader,
       swipeToDismiss,
       origin,
@@ -217,7 +219,7 @@ export default class LightboxOverlay extends Component {
     }];
 
     const background = (<Animated.View style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}></Animated.View>);
-    const header = (<Animated.View style={[styles.header, lightboxOpacityStyle]}>{(renderHeader ?
+    const header = (<Animated.View style={[headerStyle || styles.header, lightboxOpacityStyle]}>{(renderHeader ?
       renderHeader(this.close) :
       (
         <TouchableOpacity onPress={this.close}>

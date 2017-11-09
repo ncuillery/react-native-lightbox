@@ -7,6 +7,7 @@ import LightboxOverlay from './LightboxOverlay';
 export default class Lightbox extends Component {
   static propTypes = {
     activeProps:     PropTypes.object,
+    headerStyle:     PropTypes.object,
     renderHeader:    PropTypes.func,
     renderContent:   PropTypes.func,
     underlayColor:   PropTypes.string,
@@ -28,6 +29,7 @@ export default class Lightbox extends Component {
     didOpen: () => {},
     willClose: () => {},
     onClose: () => {},
+    headerStyle: null,
   };
 
   state = {
@@ -56,6 +58,7 @@ export default class Lightbox extends Component {
   getOverlayProps = () => ({
     isOpen: this.state.isOpen,
     origin: this.state.origin,
+    headerStyle: this.props.headerStyle,
     renderHeader: this.props.renderHeader,
     swipeToDismiss: this.props.swipeToDismiss,
     springConfig: this.props.springConfig,
